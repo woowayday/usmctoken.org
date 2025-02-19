@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Token Distributor</title>
+    <script src="https://cdn.jsdelivr.net/npm/ethers@5.7.0/dist/ethers.umd.min.js"></script>
+</head>
+<body>
+    <h1>Token Distributor</h1>
+    <button id="connectButton">Connect Wallet</button>
+    <button id="claimButton" disabled>Claim 1776 Tokens</button>
+    <script>
+        let provider;
+        let signer;
+        let contract;
+        const contractAddress = '0xYourContractAddress';  // Replace with your deployed contract address
+        const tokenAddress = '0xYourTokenAddress';  // Replace with the ERC-20 token address
+        
+        const abi = [
+            "function receive() external payable",
+            "function depositTokens(uint256 amount) external"
+        ];
+
+        const connectButton = document.getElementById("connectButton");
+        const claimButton = document.getElementById("claimButton");
+
+        connectButton.onclick = async () => {
+            if (window.ethereum) {
+                provider = new ethers.providers.Web3Provider(window.ethereum);
+                signer = provider.getSigner();
+                contract = new ethers.Contract(contractAddress, abi, signer);
+
+                try {
+                    await provider.send("eth_requestAccounts", []);
+                    connectButton.textContent = "Connected";
+                    claimButton.disabled = false;
+                } catch (err) {
+                    console.log("User rejected the request");
+                }
+            } else {
+                alert("MetaMask is required!");
+            }
+        };
+
+        claimButton.onclick = async () => {
+            try {
+                const tx = await contract.receive({ value: ethers.utils.parseEther("0") });
+                await tx.wait();
+                alert("Claim successful! You have received 1776 tokens.");
+            } catch (err) {
+                console.error("Error claiming tokens:", err);
+                alert("An error occurred.");
+            }
+        };
+    </script>
+</body>
+</html>

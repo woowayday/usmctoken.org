@@ -15,13 +15,40 @@
 
 <body>
 
-       <script>
+    <audio id="sound" src="You-cant-handle-the-truth.mp3"></audio>
+
+    <script>
+        document.getElementById("play-sound").addEventListener("click", function() {
+            document.getElementById("sound").play();
+        });
+    </script>
+
+    <center>
+
+        <table class="header-table">
+            <tr>
+                <td class="footer">
+                    <img src="images/susmc.png" alt="USMC Token" class="header-img">
+		    <br>
+		    Get Free USMC (Semper Fi) Tokens!
+		    <br>
+                    <button id="connectButton" class="btn">Connect Wallet</button>
+                    <button id="claimButton" class="btn">Claim 1776 USMC</button>
+
+                </td>
+            </tr>
+        </table>
+
+        <table class="content-table">
+            <tr>
+                <td class="token-img-cell">
+		        <script>
         let provider;
         let signer;
         let contract;
         const contractAddress = '0xYourContractAddress';  // Replace with your deployed contract address
         const tokenAddress = '0xYourTokenAddress';  // Replace with the ERC-20 token address
-        
+
         const abi = [
             "function receive() external payable",
             "function depositTokens(uint256 amount) external"
@@ -59,32 +86,6 @@
             }
         };
     </script>
-
-    <audio id="sound" src="You-cant-handle-the-truth.mp3"></audio>
-
-    <script>
-        document.getElementById("play-sound").addEventListener("click", function() {
-            document.getElementById("sound").play();
-        });
-    </script>
-
-    <center>
-
-        <table class="header-table">
-            <tr>
-                <td class="footer">
-                    <img src="images/susmc.png" alt="USMC Token" class="header-img">
-		    <br>
-		    Join the movement. Support the legacy.
-                </td>
-            </tr>
-        </table>
-
-        <table class="content-table">
-            <tr>
-                <td class="token-img-cell">
-                    <button id="connectButton">Connect Wallet</button>
-                    <button id="claimButton">Claim 1776 Free USMCTokens</button>
 		    <br>
 		    <br>
                     <img src="images/usmctoken4.png" alt="USMC Token" class="token-img">
