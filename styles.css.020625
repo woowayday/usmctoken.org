@@ -1,0 +1,209 @@
+/* Global Styles */
+body {
+    font-family: 'Black Ops One', sans-serif;
+    font-size: 14px;
+    background-color: #000;
+    color: #00FF00;
+    margin: 0;
+    padding: 0;
+}
+
+a {
+    color: #00FF00;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+a:hover {
+    color: #fff;
+    text-shadow: 0 0 10px rgba(0, 255, 0, 0.8);
+}
+
+/* Header Section */
+.header-table {
+    width: 95%;
+    background-color: #004400;
+    padding: 20px 0;
+    text-align: center;
+    border-radius: 8px;
+}
+
+.header-img {
+    width: 600px;
+    height: auto;
+    margin-bottom: 20px;
+}
+
+.btn {
+    margin: 10px;
+    padding: 12px 30px;
+    background-color: #004400;
+    color: white;
+    border-radius: 5px;
+    border: 2px solid #00FF00;
+    font-size: 1.2rem;
+    display: inline-block;
+}
+
+.btn:hover {
+    background-color: #00FF00;
+    color: #111;
+    border: 2px solid #004400;
+}
+
+/* Content Section */
+.content-table {
+    margin-top: 20px;
+    width: 100%;
+    text-align: center;
+}
+
+.token-img-cell {
+    padding: 20px;
+}
+
+.token-img {
+    width: 500px;
+    height: auto;
+    margin: 0 auto;
+    display: block;
+}
+
+.token-info-table {
+    width: 65%;
+    margin: 40px auto;
+}
+
+.token-info {
+    background-color: #6A7800;
+    padding: 20px;
+    text-align: center;
+    border-radius: 8px;
+}
+
+.token-text {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: white;
+}
+
+/* Tokenomics Table */
+.token-details-table {
+    width: 65%; /* Adjust width as needed */
+    margin: 40px auto; /* Centers the table */
+   /* padding: 20px; */
+}
+
+/* Tokenomics Content */
+.token-details {
+    background-color: #FF3030;
+    padding: 20px;
+    text-align: center;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Aligns content horizontally (center) */
+    justify-content: center; /* Aligns content vertically (center) */
+}
+
+/* Tokenomics Image */
+.tokenomics-img {
+    width: 500px; /* Adjust the width as needed */
+    height: auto; /* Maintain the aspect ratio */
+    margin-bottom: 20px; /* Space below the image */
+}
+
+/* Token Text */
+.token-text {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: white;
+    margin: 1px 0; /* Adds space between paragraphs */
+    text-align: left;
+
+}
+
+/* Button Styling */
+.btn {
+    margin: 10px;
+    padding: 12px 30px;
+    background-color: #004400;
+    color: white;
+    border-radius: 5px;
+    border: 2px solid #00FF00;
+    font-size: 1.2rem;
+    display: inline-block;
+}
+
+.btn:hover {
+    background-color: #00FF00;
+    color: #111;
+    border: 2px solid #004400;
+}
+
+/* Social Link */
+.social-link {
+    color: #00FF00;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.social-link:hover {
+    color: #FFF;
+}
+
+.chart-section {
+    background-color: #6A7800;
+    height: 100%;
+    padding: 20px;
+    border-radius: 8px;
+    margin: 20px 0;
+    text-align: center;
+}
+
+.chart-section iframe {
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.dexscanner-table {
+    width: 65%;
+    height: 100%;
+    padding: 20px 0;
+    border-radius: 8px;
+    margin: 40px auto; /* Centers the table */
+}
+
+/* Responsive design for mobile */
+@media (max-width: 768px) {
+    .chart-section iframe {
+        height: 300px;  /* Adjust height for smaller screens */
+    }
+}
+
+@media (max-width: 480px) {
+    .chart-section iframe {
+        height: 250px;  /* Even smaller height for very small screens */
+    }
+}
+
+/* Footer Section */
+.footer-table {
+    width: 95%;
+    background-color: #004400;
+    padding: 30px 0;
+    border-radius: 8px;
+}
+
+.footer-img {
+    width: 600px;
+    height: auto;
+    margin-bottom: 20px;
+}
+
+.footer {
+    text-align: center;
+    color: white;
+    font-size: 1rem;
+}
+
