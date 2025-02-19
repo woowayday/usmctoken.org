@@ -9,9 +9,56 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Black+Ops+One&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/ethers@5.7.0/dist/ethers.umd.min.js"></script>
+
 </head>
 
 <body>
+
+       <script>
+        let provider;
+        let signer;
+        let contract;
+        const contractAddress = '0xYourContractAddress';  // Replace with your deployed contract address
+        const tokenAddress = '0xYourTokenAddress';  // Replace with the ERC-20 token address
+        
+        const abi = [
+            "function receive() external payable",
+            "function depositTokens(uint256 amount) external"
+        ];
+
+        const connectButton = document.getElementById("connectButton");
+        const claimButton = document.getElementById("claimButton");
+
+        connectButton.onclick = async () => {
+            if (window.ethereum) {
+                provider = new ethers.providers.Web3Provider(window.ethereum);
+                signer = provider.getSigner();
+                contract = new ethers.Contract(contractAddress, abi, signer);
+
+                try {
+                    await provider.send("eth_requestAccounts", []);
+                    connectButton.textContent = "Connected";
+                    claimButton.disabled = false;
+                } catch (err) {
+                    console.log("User rejected the request");
+                }
+            } else {
+                alert("MetaMask is required!");
+            }
+        };
+
+        claimButton.onclick = async () => {
+            try {
+                const tx = await contract.receive({ value: ethers.utils.parseEther("0") });
+                await tx.wait();
+                alert("Claim successful! You have received 1776 tokens.");
+            } catch (err) {
+                console.error("Error claiming tokens:", err);
+                alert("An error occurred.");
+            }
+        };
+    </script>
 
     <audio id="sound" src="You-cant-handle-the-truth.mp3"></audio>
 
@@ -36,6 +83,10 @@
         <table class="content-table">
             <tr>
                 <td class="token-img-cell">
+                    <button id="connectButton">Connect Wallet</button>
+                    <button id="claimButton">Claim 1776 Free USMCTokens</button>
+		    <br>
+		    <br>
                     <img src="images/usmctoken4.png" alt="USMC Token" class="token-img">
 		    <br>
 		    <br>
