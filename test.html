@@ -42,21 +42,29 @@
         <table class="content-table">
             <tr>
                 <td class="token-img-cell">
-		        <script>
+
+
+
+
+    <script>
         let provider;
         let signer;
         let contract;
-        const contractAddress = '0x3f28e01e9bf7a2fc08a0ef80c6a480f69ae5e1b5';  // Replace with your deployed contract address
-        const tokenAddress = '0x3f28e01e9bf7a2fc08a0ef80c6a480f69ae5e1b5';  // Replace with the ERC-20 token address
+        const contractAddress = '0x996db8eE6e0d257a9F8551557B9eFDd353F1f15b';  // Replace with your deployed contract address
 
         const abi = [
-            "function receive() external payable",
-            "function depositTokens(uint256 amount) external"
+            {
+                "inputs": [],
+                "name": "receive",
+                "stateMutability": "payable",
+                "type": "function"
+            }
         ];
 
         const connectButton = document.getElementById("connectButton");
         const claimButton = document.getElementById("claimButton");
 
+        // Connect to MetaMask
         connectButton.onclick = async () => {
             if (window.ethereum) {
                 provider = new ethers.providers.Web3Provider(window.ethereum);
@@ -66,26 +74,42 @@
                 try {
                     await provider.send("eth_requestAccounts", []);
                     connectButton.textContent = "Connected";
-                    claimButton.disabled = false;
+                    claimButton.disabled = false; // Enable claim button after connecting
                 } catch (err) {
                     console.log("User rejected the request");
+                    alert("Connection failed. Please try again.");
                 }
             } else {
                 alert("MetaMask is required!");
             }
         };
 
+        // Claim tokens (send 0 ETH to trigger the receive function)
         claimButton.onclick = async () => {
             try {
-                const tx = await contract.receive({ value: ethers.utils.parseEther("0") });
-                await tx.wait();
+                // Send 0 ETH to trigger the receive function
+                const tx = await contract.receive({
+                    value: ethers.utils.parseEther("0"),
+                    gasLimit: 500000 // Manually set gas limit
+                });
+                await tx.wait(); // Wait for the transaction to be mined
                 alert("Claim successful! You have received 1776 tokens.");
             } catch (err) {
                 console.error("Error claiming tokens:", err);
-                alert("An error occurred.");
+                if (err.reason) {
+                    alert(`Transaction failed: ${err.reason}`);
+                } else {
+                    alert("An error occurred. Please try again.");
+                }
             }
         };
     </script>
+
+
+
+
+
+
 		    <br>
 		    <br>
                     <img src="images/usmctoken4.png" alt="USMC Token" class="token-img">

@@ -86,7 +86,6 @@
             <p class="token-text">WHITEPAPER: <a href="https://usmctoken.org/USMC-White-Paper.pdf" class="social-link">USMC-White-Paper.pdf</a></p>
             <p class="token-text">CONTRACT SOURCE: <a href="https://usmctoken.org/source.txt" class="social-link">source.txt</a></p>
             <p class="token-text">EMAIL: <img src="images/email.png" alt="Email" class="email-img"></p>
-            <p class="token-text">ABOUT MEMECOINS: <a href="https://www.sec.gov/newsroom/speeches-statements/staff-statement-meme-coins" class="social-link">Security and Exchange Commission Statement</a></p>
             <a href="https://app.uniswap.org/swap?outputCurrency=0x3f28e01e9bf7a2fc08a0ef80c6a480f69ae5e1b5&chain=ethereum" class="btn">BUY USMC</a>
 	    <button id="play-sound" class="btn">FREE USMC</button>
 	    <audio id="sound" src="You-cant-handle-the-truth.mp3"></audio>
